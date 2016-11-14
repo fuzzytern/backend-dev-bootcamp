@@ -12,13 +12,13 @@ It contains lectures and exercises that will notably help you:
 This is a work in development. Here is a tentative outline of relevant topics with coverage so far:
 
 - [ 100% ] week1 - Introduction to Linux, command line, git, shell
-- [ 33% ] week2 - Introduction to JavaScript, running on nodejs
+- [ 34.56% ] week2 - Introduction to JavaScript, running on nodejs
 - [ 0% ] week3 - Intermediate JavaScript
 - [ 0% ] week4 - Testing and review
 - [ 0% ] week5 - Introduction to networking, sockets
 - [ 0% ] week6 - Creating a decentralized multicast chat server
 - [ 0% ] week7 - Adding flair, making it pretty with colors
-
+- [ 0% ] week8 - party
 ## Contribution instructions
 
 Did you find an error in one of the excercise? Do you have recommendations to improve anything? Just follow the following two-step process:
