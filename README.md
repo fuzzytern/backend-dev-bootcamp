@@ -12,7 +12,7 @@ It contains lectures and exercises that will notably help you:
 This is a work in development. Here is a tentative outline of relevant topics with coverage so far:
 
 - [ 100% ] week1 - Introduction to Linux, command line, git, shell
-- [ 34.56% ] week2 - Introduction to JavaScript, running on nodejs
+- [ 33% ] week2 - Introduction to JavaScript, running on nodejs
 - [ 0% ] week3 - Intermediate JavaScript
 - [ 0% ] week4 - Testing and review
 - [ 0% ] week5 - Introduction to networking, sockets
