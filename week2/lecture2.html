@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <!--
+       The MIT License (MIT)
+
+       Copyright (c) 2015 Tom Panning
+
+       Permission is hereby granted, free of charge, to any person obtaining a copy
+       of this software and associated documentation files (the "Software"), to deal
+       in the Software without restriction, including without limitation the rights
+       to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+       copies of the Software, and to permit persons to whom the Software is
+       furnished to do so, subject to the following conditions:
+
+       The above copyright notice and this permission notice shall be included in
+       all copies or substantial portions of the Software.
+
+       THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+       IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+       FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+       AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+       LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+       OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+       THE SOFTWARE.
+     -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Introduction to JavaScript
+    </title>
+    <meta name="author" content="Edgar Aroutiounian">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme">
+    <!-- Printing and PDF exports -->
+    <script>
+     var link = document.createElement('link');
+     link.rel = 'stylesheet';
+     link.type = 'text/css';
+     link.href = window.location.search.match(/print-pdf/gi)
+	      ?  'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css'
+	       : 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/paper.css';
+     document.getElementsByTagName('head')[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+      <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+	<section data-markdown>
+	  <script type="text/template">
+# Introduction to JavaScript
+
+## Edgar Aroutiounian
+---------------------
+#### ISTC backend development course, Week-2, Fall 2016
+#### Yerevan, Armenia
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Programming Languages_
+--------------------------
+Programming languages generally fall into two categories,
+
+1. Compiled
+2. Interpreted
+
+Examples of (1) include **C**, **C++** and **OCaml**
+
+Examples of (2) include **Python**, **JavaScript** and **Ruby**
+
+(Java isn't exactly 1 or 2 as it compiles to Java bytecode and
+then its interpreted by the JVM)
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Short History of JavaScript_
+--------------------------------
+The first web browser was called
+[**Mosaic**](https://en.wikipedia.org/wiki/Mosaic_(web_browser)
+and the web itself was made so that physicists could share
+research papers. Research papers are static content,
+that is they don't change. Think about your HTML,
+it doesn't change.
+
+Then businesses discovered the web and immediately interactively was
+needed. People needed the websites to do things, to take credit cards,
+to animate things, to change the site; for that you need a real
+programming language.
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Short History of JavaScript, cont..._
+-----------------------------------------
+There was a race to provide a programming language for the web.
+[Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich) at NetScape,
+now at Mozilla, rushed and in eight days created **JavaScript**.
+At the time NetScape was in competition with Microsoft and Microsoft
+also created a programming language for the web, it was
+called **VBScript**
+
+(Because JavaScript was made in only eight days, the
+language has some serious mistakes)
+
+One of the reasons why JavaScript won and VBScript died is the former
+is open-source and the latter was closed source. This is why JavaScript is also
+known as **EcmaScript**, there is an open spec, standard.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _Engines_
+-------------
+
+An engine is another name for an interpreter, remember
+that JavaScript is interpreted, not compiled.
+
+The first JavaScript engine, written by Eich, was **SpiderMonkey**, it is
+implemented in **C++** and still used in **FireFox**
+
+Today there are quite a few JS engines,
+
+1. SpiderMonkey, used in FireFox
+2. Chakra, used in Edge
+3. JavaScriptCore, used in Safari, Mobile Safari,
+   ReactNative, original version of Chrome
+4. V8, created by Google, used in Chrome and the
+   foundation of **nodejs**
+
+...and more
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _nodejs_
+------------
+In this course we will be using **nodejs**, also just known as
+**node**, and the latest version of JavaScript called EcmaScript 6 (ES6).
+This is so that you know the latest technologies used in Silicon Valley.
+
+**node** was made in 2009 by an amazing programmer named Ryan Dahl,
+he basically took **V8**, added an event loop and some low-level IO
+calls. Since then the project has taken off and now node is used by
+basically all startups and big name users like Groupon, IBM, LinkedIn,
+Microsoft, Netflix, PayPal, SAP, Walmart, Yahoo!, Cisco Systems and many more.
+
+We are learning on the latest versions of node,
+which support the majority of ES6 (EcmaScript 6). You can play with the
+node repl at any time by starting it on the command line:
+
+```
+$ node
+> var a = 10;
+```
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _Installation notes_
+------------------------
+node works on all the major platforms, Windows, Linux, OS X; we work on Linux.
+if on a Debian or Debian downstream project like Ubuntu you can do:
+```
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
+$ sudo aptitude install nodejs -y
+```
+
+we also use the `Atom` text editor
+
+```
+$ wget https://github.com/atom/atom/releases/download/v1.10.2/atom-amd64.deb
+$ sudo dpkg -i atom-amd64.deb
+$ sudo npm install tern -g
+$ apm install react atom-ternjs
+```
+Then you can make JavaScript programs by making a JavaScript file with `Atom`
+```
+$ atom code.js
+```
+And run the code:
+```
+$ node code.js
+```
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: variables_
+-----------------
+Every programming language has **variables**. A variable, also called
+an identifier, is way to refer to data in memory. Fundamental data types
+in JavaScript include **String**, **Boolean**, **Number** and others.
+
+Note that comments, aka non runnable code, start with **//**
+
+Example:
+
+```
+// Creates a variable called a with the data 123, the type of
+// a is Number
+var a = 123;
+
+// Creates a variable called name with the data 'Student'
+// the type of name is String
+var name = 'Student';
+```
+
+**NOTE** Every language also has `keywords`, these are words that you cannot use
+as identifiers, they are reserved for the language itself, examples: `if`, `for`,
+`var`, `function`, and more.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: variables cont..._
+-----------------------------------
+Notice that we variables that we created started with `var`
+In ES6, EcmaScript 6, we have three ways of declaring variables.
+
+<br/>
+
+```
+var a = 10;
+const b = 'hello';
+let g = true;
+```
+
+<br/>
+
+What is the difference between the three?
+For that we need to talk about scope.
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: scope_
+-----------------------
+Scope is a fundamental idea in all programming languages and its especially
+important in JavaScript. It basically means where its legal to use a variable.
+In ES6 scopes are introduced by `blocks`, some examples of things that
+introduce blocks include conditionals, loops, and functions.
+
+```
+// imagine that this file is called prog.js
+if (true) {
+  var name = '123';
+}
+// we can print anything to the terminal screen with console.log
+console.log(name);
+```
+if we run this code:
+```
+$ node prog.js
+```
+Then we'll see that '123' is printed to the screen. Here we say that the conditional leaks
+scope, the variable `name` is escaping the scope.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: scope cont..._
+-------------------------------
+Now if we try using `let`, then we'll see a difference:
+```
+// imagine that this file is called prog.js
+if (true) {
+  let name = '123';
+}
+// we can print anything to the terminal screen with console.log
+console.log(name);
+```
+if we run this code:
+```
+$ node prog.js
+```
+Then we get an `exception`, a fatal error not handled by you
+```
+ReferenceError: name is not defined
+  at repl:1:13
+  at realRunInThisContextScript (vm.js:22:35)
+  at sigintHandlersWrap (vm.js:98:12)
+  at ContextifyScript.Script.runInThisContext (vm.js:24:12)
+  at REPLServer.defaultEval (repl.js:313:29)
+  at bound (domain.js:280:14)
+  at REPLServer.runBound [as eval] (domain.js:293:12)
+  at REPLServer.onLine (repl.js:513:10)
+  at emitOne (events.js:101:20)
+  at REPLServer.emit (events.js:188:7)
+```
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: scope cont..._
+-------------------------------
+As programmers we ALWAYS need to read the error messages. The error message here
+tells you that the variable is not defined, that is, its not in scope. Why? Because
+we created the variable `name` with `let` and variables created with `let` are
+scoped to the `block` in which they are created. that is, you're only allowed
+to use that variable in the block that you created it in.
+
+Another example:
+```
+// Silly for loop.
+for (var i = 0; i < 3; i++) {
+  console.log(i);
+}
+console.log(i)
+```
+Here we make a variable `i` which we made only to do a loop three times
+but its still accessible, usable outside the `for` loop.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: scope cont..._
+-------------------------------
+We always want to scope variables as close as possible to their usage,
+their actual needs. Another modifier is `const`. Now we need to talk
+about mutation.
+```
+let a = 'Karen';
+a = 'Հասմիկ';
+```
+What happened? We changed, we **mutated**, the variable from the string 'Karen'
+to the new string 'Հասմիկ'. Also notice that we only have to use the `let` modifier
+the first time we make the variable. What if we don't want the variable to change?
+For that we use `const`
+```
+const a = 'Karen';
+a = 'Հասմիկ';
+```
+`exception`:
+```
+TypeError: Assignment to constant variable.
+  at repl:1:3
+  at realRunInThisContextScript (vm.js:22:35)
+  at sigintHandlersWrap (vm.js:98:12)
+  at ContextifyScript.Script.runInThisContext (vm.js:24:12)
+```
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: scope cont..._
+--------------------------------
+So `const` is like `let` semantically, aka the meaning of how its used
+and scoping but with the additional benefit that variables made with
+`const` are not allowed to be reassigned. The final one, `var`, is function scoped.
+
+It is important to understand this fundamental concept of scope.
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: control structure_
+-----------------------------------
+Now we will talk about control structure, for the moment we will focus on
+synchronous code, that is code that executes top to down. That is node will read
+your code from the beginning to end and do everything that you tell it to do.
+
+We've seen two control structures already, the `if` conditional and the `for` loop.
+
+```
+// Inside the () needs to be a boolean expression
+// something that evaluates to true or false.
+if (10 > 5) {
+  console.log('Hello world');
+}
+```
+`for` loops
+```
+for (let j = 0; j < 4; j++) {
+  console.log(j + 5);
+}
+```
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _JavaScript: control structure cont..._
+-------------------------------------------
+Control structures help us structure, organize our code, which way
+it should 'go', what it should do.
+
+The conditional can also take an `else`
+```
+if (5 < 3) {
+  console.log('This is impossible);
+} else {
+  console.log('Of course 5 is not less than 3');
+}
+```
+Another loop construct is the `while` control structure.
+```
+let i = 0;
+while (i < 4) {
+  console.log('Keep talking');
+  // i++ is short for i = i + 1;
+  i++
+}
+```
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _git_
+---------
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _git_
+---------
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+ ### _slide_
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### __
+----------------------------------------------------
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+
+	  </script>
+	</section>
+
+
+      </div>
+    </div>
+
+    <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js"></script>
+
+    <script>
+     // Full list of configuration options available at:
+     // https://github.com/hakimel/reveal.js#configuration
+     Reveal.initialize({
+       slideNumber:true,
+       controls: true,
+       progress: true,
+       history: true,
+       center: true,
+       transitionSpeed:'slow',
+       previewLinks:true,
+       transition: 'convex', // none/fade/slide/convex/concave/zoom
+       // Optional reveal.js plugins
+       dependencies: [
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js',
+	   condition: function() { return !document.body.classList; } },
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js',
+	   condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js',
+	   condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js',
+	   async: true,
+	   condition: function() { return !!document.querySelector( 'pre code' ); },
+	   callback: function() { hljs.initHighlightingOnLoad(); } },
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true },
+	 { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true }
+       ]
+     });
+    </script>
+  </body>
+</html>
