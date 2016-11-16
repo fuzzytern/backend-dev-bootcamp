@@ -18,7 +18,7 @@ This is a work in development. Here is a tentative outline of relevant topics wi
 - [ 0% ] week5 - Introduction to networking, sockets
 - [ 0% ] week6 - Creating a decentralized multicast chat server
 - [ 0% ] week7 - Adding flair, making it pretty with colors
-
+- [ 0% ] week8 - party
 ## Contribution instructions
 
 Did you find an error in one of the excercise? Do you have recommendations to improve anything? Just follow the following two-step process:
