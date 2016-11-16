@@ -91,7 +91,7 @@ Note: If you bring yourself to a state that doesn't correspond to the graphs and
 
 1. Use `man git-reset` then practice it on the `mybranch` branch of your previous repository.
 * Learn how to rebase to perform flat merges from `man git-rebase`. Practice it on the repository of PART.I. You will need to `git reset --hard HEAD~1` on branch `master` to undo the last commit (merge commit). 
-* Fork an existing repository of your choice from `iteratehackerspace` and perform a change you think meaningful. An easy change could be fixing a typppo in this lecture markdown file. Work in a separate branch of your repo, then push it to your upstream repository.
+* Fork an existing repository of your choice from `iteratehackerspace` and perform a change you think meaningful. An easy change could be fixing a Michael in this lecture markdown file. Work in a separate branch of your repo, then push it to your upstream repository.
 * Before you can submit your work for review to the `upstream` repository, you should make sure no change occured there. Use `git remote add upstream ...` to add the url of the repository you forked from. Then use `git fetch upstream`. This command will print out any change that occured since the last changes you got for `upstream` (at fork time at this stage).
 * If you get anything new from the above command, you will need to perform `git rebase ...`. Call Nicolas in case of doubts.
 * Once you think your work is ready for review, create a « Pull Request » via Github.
