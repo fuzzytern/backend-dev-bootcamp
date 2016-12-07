@@ -113,37 +113,99 @@ We will focus on the TCP layer and access it with `sockets`
 
 	<section data-markdown>
 	  <script type="text/template">
+## _Networking cont..._
+-----------------------
+The four main levels of the networking stack are:
+
+1. Link, this is the physical hardware level, 
+   think physical ethernet wires.
+2. Network, this lets us uniquely identify machines, 
+   think `IP` addresses
+3. Transport, this lets us move data (called packets) 
+   across the network, think TCP
+4. Application, 
+   this is where we build higher level protocols, think HTTP, FTP, etc
 
 	  </script>
 	</section>
 
 	<section data-markdown>
 	  <script type="text/template">
+## _Networking cont..._
+-----------------------
+Remember that any data moving from one computer to another
+is just `raw` data. In `node` this is represented by strings 
+or the `Buffer` object. node is specifically built for 
+data intensive applications, that is networked applications.
 
+Since such programs are typically Input/Output bound, I/O bound,
+node's event based async style is perfect for such uses.
 	  </script>
 	</section>
 
 	<section data-markdown>
 	  <script type="text/template">
+## _Sockets_
+-----------------------
+The way to communicate with networked computers is with 
+sockets. Sockets are implemented at the C/C++ level. You can 
+read about the `C` function call that makes a socket with:
 
+```
+$ man socket
+```
+it should show:
+
+```
+NAME
+socket -- create an endpoint for communication
+
+SYNOPSIS
+#include <sys/socket.h>
+
+int
+socket(int domain, int type, int protocol);
+...
+```
+Note that there is notion of `domain`, `type` and `protocol`.
 	  </script>
 	</section>
 
-
 	<section data-markdown>
 	  <script type="text/template">
+## _Sockets cont..._
+--------------------
+There are different kinds of sockets, `Unix` sockets and `internet` 
+sockets; `HTTP` is typically built on top of `TCP` sockets. We will 
+work with `UDP` sockets. The different between `TCP` and `UDP` is 
+how data is routed, aka moved, across the network and whether both
+sides of the communication need to know if the message actually made 
+it to the other side. 
 
+(A web server is basically a lot of code written around a TCP socket)
 	  </script>
 	</section>
+
 	<section data-markdown>
 	  <script type="text/template">
+## _node and sockets_
+---------------------
+`node` makes is super easy to play with `sockets`.
+We will use the `net` module, you can find the documentation
+[here]() for it, I encourage you to read it often.
 
+The `socket` object in `node` is an `EventEmitter`, that is 
+it emits events and gives you a chance to handle it.
 	  </script>
 	</section>
 
 	<section data-markdown>
 	  <script type="text/template">
-
+## _node and sockets_
+---------------------
+<small> Purposefully made as a picture so you can't copy paste the code, 
+you must write it!</small>
+<img src='nodejs_socket.png' style='max-height:500px'/>
 	  </script>
 	</section>
 
