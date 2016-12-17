@@ -22,3 +22,6 @@ For the *client*, your code will:
 * create an instance of `net.Socket`
 * have an event handler on the socket for `data`, which will write to the console of the client any response from the server
 * use [socket.Connect](https://nodejs.org/api/net.html#net_socket_connect_options_connectlistener) to send data to the server through the socket (hints: `net.Socket` extends the [`Stream` module](https://nodejs.org/api/stream.html) which has a [`.write`](https://nodejs.org/api/stream.html#stream_writable_write_chunk_encoding_callback) method to write to it).
+
+4. Login on the machine as priviledged user (ask Nicolas) and install Wireshark (`sudo apt-get install wireshark` - say `No` at the prompt during install). Open it with `sudo` and capture the TCP trafic that comes from the IP address of your partner by applying the proper filters (you will need to know their IP address). You can read more about filters on the official [
+Wireshark documentation](https://wiki.wireshark.org/CaptureFilters)
