@@ -9,7 +9,7 @@ It contains lectures and exercises that will notably help you:
 - gain practical understanding on the use of communication protocols on the Internet
 - work in teams on collaborative projects (with Git and Github)
 
-This is a work in development. Here is a tentative outline of relevant topics with coverage so far:
+This is a work in development. Here is an outline of relevant topics:
 
 - week1 - Introduction to Linux, command line, git, shell
 - week2 - Introduction to JavaScript, running on nodejs
