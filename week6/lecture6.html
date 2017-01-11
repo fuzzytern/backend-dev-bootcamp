@@ -129,7 +129,87 @@ successfully.
 --------------------
 Sometimes we care more about performance, we just want to 
 send as much packets as possible to the other computer without 
-caring if the other computers got it or not.
+caring if the other computers got it or not. In cases like that 
+we use another protocol called `User Datagram Protocol`,
+[`UDP`](https://en.wikipedia.org/wiki/User_Datagram_Protocol)
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Routing cont..._
+--------------------
+`UDP` is a protocol which just sends the data without 
+caring if the other side, the other computer getting the data,
+got the data or not. This means that if you use just UDP, then 
+you might experience data loss.
+
+There are a few domains where we might care more about just getting 
+as much data across than if all the data got there, that is
+we are okay with losing some packets. 
+
+Examples of UDP usage include: Skype and other VOIP, Online Multiplayer
+games, and YouTube video streaming.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Multicasting_
+-----------------
+Often we don't just want to send messages to one computer but to 
+many computers. With TCP we are directly talking to one computer 
+but that comes with some overhead. UDP lets us efficently send messages
+to everyone on a network without checking if they got it or not with
+some called `Multicast`
+
+```
+                                               ----------
+                                              | Computer1 |
+                                             / ----------
+ --------          -------------------------/   ----------
+| Sender |------> | Multicast Group/Network |--| Computer2 |
+ --------          -------------------------\   -----------
+                                             \  -----------
+                                              | Computer..N |
+                                                -----------
+
+```
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Multicasting Cont..._
+-------------------------
+We can easily do it in `node`, run script on two different
+computers on the same network.
+```
+"using strict";
+
+const multicast_addr = "224.1.1.1";
+const bin_addr = "0.0.0.0";
+const port = 6811;
+
+const udp = require("dgram");
+
+const listener = udp.createSocket({type:"udp4", reuseAddr:true});
+const sender = udp.createSocket({type:"udp4", reuseAddr:true});
+
+listener.bind(port, multicast_addr, () => {
+  listener.addMembership(multicast_addr);
+  listener.setBroadcast(true);
+});
+
+listener.on("message", function (b, other) {
+  console.log(b.toString().trim());
+});
+
+process.stdin.on("data", function (data){
+  sender.send(data, 0, data.length, port, multicast_addr);
+});
+```
 	  </script>
 	</section>
 
