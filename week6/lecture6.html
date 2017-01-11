@@ -307,9 +307,11 @@ JSON based protocol on top of UDP.
 Here's its description:
 
 ```
+port := 6881
 msg ping := {identifier : String, uptime : Number }
 msg message := {identifier : Number, payload : String}
 ```
+
 `ISTC-SPEAK` is made up of only two kinds of messages, `ping` 
 and `message`. Each needs to have an `identifier` field of type 
 `String`, `ping` has an extra field saying how long the sender 
@@ -317,6 +319,22 @@ has been running for and `message` has an extra field of the actual
 message that the sender wants to share with everyone on the multicast 
 network.
 
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Group Project for rest of class_
+------------------------------------
+Now we'll do a group project, in your own teams, you'll 
+implement a `ISTC-SPEAK` client. There are two requirements
+of this project.
+
+1. It must correctly implement the `ISTC-SPEAK` protocol
+2. It must be aesthically pleasing and use either `blessed` or the
+   `blessed-contrib` library. Look at the example code in their
+   respective repos.
+3. It must use `Promises`, that will be explained in the next lecture.
 	  </script>
 	</section>
 
