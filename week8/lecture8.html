@@ -26,7 +26,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      Review
+      JavaScript Promises
     </title>
     <meta name="author" content="Edgar Aroutiounian">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,7 +59,7 @@
 
 	<section data-markdown>
 	  <script type="text/template">
-# Review
+# Promises and Promisifying CPS 
 
 ## Edgar Aroutiounian
 ---------------------
@@ -70,67 +70,20 @@
 
 	<section data-markdown>
 	  <script type="text/template">
-## _Review_
------------
-We have gone over some big new ideas so far in the course. Now lets
-do a comprehensive review so that everyone is on the same minimum level.
-Remember that you need to spend HOURS outside of these lectures, you
-need to write the code, understand it and read through documentation
-and the links that are provided. Also try reading their `wikipedia`
-pages. 
+## _CPS Style_
+--------------
+By now you have noticed the `node` coding pattern of giving
+functions arguments of callbacks, functions. Those arguments are 
+usually the last argument. 
 
-Of all the material we've covered so far, 
-this review focuses on `node` fundamentals and networking ideas.
-
-	  </script>
-	</section>
-
-	<section data-markdown>
-	  <script type="text/template">
-## _node fundamentals_
-----------------------
-node is async by default. Recall what programming
-itself means, it means we are telling the computer what to do in code.
-That also has an idea of time, we want some code to happen after other
-code. Like do this first and then do that, writing such code is called
-sequential, synchronous code. 
-
-Some pretend code:
 ```
-const file_content = read_file('./names.txt', 'r');
-const lines = file_content.split('\n');
-for (let line of lines) {
-  console.log(`Length: of line:${line} is: ${line.length})
-}
+const fs = require('fs');
+fs.readFile('./some_file.js', 'utf-8', s => {
+  console.log(`Got: ${s}`);
+});
 ```
-This code must do `read_file` before the call to `.split`. After both
-finish then it does the `for` loop.
 
-	  </script>
-	</section>
 
-	<section data-markdown>
-	  <script type="text/template">
-## _node fundamentals cont..._
-------------------------------
-
-`read_file` is a function which has to read a file, which means it has 
-to do some input/output. Input/Output, that is reading from physical 
-hardware, like a harddrive, is really super slow compared to everything
-else the computer can be doing. 
-
-Think about it, what if `names.txt` is a 300GB sized file? Then
-your program will not continue past `read_file` until that function
-`returns`, that is until it finishes. This is called a 
-blocking I/O function call. 
-
-	  </script>
-	</section>
-
-	<section data-markdown>
-	  <script type="text/template">
-## _node fundamentals cont..._
-------------------------------
 	  </script>
 	</section>
 
