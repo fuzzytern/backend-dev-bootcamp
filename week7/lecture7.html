@@ -189,7 +189,53 @@ loop blocks all kinds of important system timers and library code.
 	  <script type="text/template">
 ## _Networking_
 ---------------
+Networking is whenever we have two or computers talk to one another.
+Remember that because the computers are talking to one another over 
+a wire, like an ethernet cable, or via radio, like WiFi then the 
+only kind of data they can send is just raw data. This is why many of 
+the `node` core APIs use the `Buffer` object because `Buffer` is the 
+most efficient way to hold raw data.
+	  </script>
+	</section>
 
+	<section data-markdown>
+	  <script type="text/template">
+## _Networking Cont..._
+-----------------------
+Networking is made up of several layers with one build on top of 
+the others. The TCP/IP network stack starts with the *link* layer, 
+this is like the ethernet cables. On top of the link layer is the IP
+layer, this is how we know about individual computers. On top of that
+is the TCP layer, that is routing aka making sure that data gets to 
+a particular computer while going through other computers on the network, 
+finally the last layer is the Application layer, that is our layer of things
+like HTTP(S).
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Networking Cont..._
+-----------------------
+So conceptually imagine it like this: 
+
+```
+
+	   |-----------------
+	   | Application Layer <- Examples: HTTP, HTTPS, FTP, SSH
+	   
+	   |-----------------
+	   | Transport Layer   <- Examples: TCP, sockets, UDP
+
+	   |-----------------
+	   | IP Layer          <- Examples: 192.4.212.4
+
+	   |-----------------
+	   | Link Layer        <- Examples: Ethernet cable, WiFi.
+```
+Each layer builds on top of the one below it. So what's the 
+difference between `TCP` and `HTTP`? HTTP is built *ON TOP* of 
+TCP.
 
 	  </script>
 	</section>
