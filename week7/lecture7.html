@@ -182,6 +182,10 @@ Because of this, it is *EXTREMELY* important that you never block
 the thread, that means do something like `while(true) { }` or 
 a blocking system I/O call, like `sleep(10)`. Blocking the event 
 loop blocks all kinds of important system timers and library code.
+
+Be sure to read this
+[*link*](https://github.com/nodejs/node/blob/master/doc/topics/event-loop-timers-and-nexttick.md),
+its straight from `node`'s source code.
 	  </script>
 	</section>
 

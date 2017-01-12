@@ -82,8 +82,32 @@ fs.readFile('./some_file.js', 'utf-8', s => {
   console.log(`Got: ${s}`);
 });
 ```
+This is called `Continuation Passing Style`, or *CPS*. You give
+functions other functions to complete computations (things to do).
+	  </script>
+	</section>
 
+	<section data-markdown>
+	  <script type="text/template">
+## _CPS Style Cont..._
+----------------------
+Sometimes though this can make code a bit hard to understand because
+you end up having to nest callbacks 
+(callbacks inside callbacks inside callbacks).
 
+Imagine something like this:
+
+```
+const fs = require('fs');
+const db = require('some-database-package');
+const server = require('./some-server');
+
+server.on('connection', (req, res) => {
+  // Do not do this in read code, always clean up 
+  // User input, never blindly give it to a SQL query.
+  db.query('select filename from
+})
+```
 	  </script>
 	</section>
 
