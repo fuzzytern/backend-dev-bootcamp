@@ -73,9 +73,10 @@
 ## _Review_
 -----------
 We have gone over some big new ideas so far in the course. Now lets
-do a comprehensive review so that everyone is on the same minimum level.
-Remember that you need to spend HOURS outside of these lectures, you
-need to write the code, understand it and read through documentation
+do a specific review so that everyone is on the same minimum level on
+some core concepts, ideas. Remember that you need to spend *HOURS* 
+outside of these lectures, you need to write the code, 
+understand it and read through documentation
 and the links that are provided. Also try reading their `wikipedia`
 pages. 
 
@@ -100,7 +101,7 @@ Some pretend code:
 const file_content = read_file('./names.txt', 'r');
 const lines = file_content.split('\n');
 for (let line of lines) {
-  console.log(`Length: of line:${line} is: ${line.length})
+  console.log(`Length: of line:${line} is: ${line.length}`);
 }
 ```
 This code must do `read_file` before the call to `.split`. After both
@@ -122,7 +123,8 @@ else the computer can be doing.
 Think about it, what if `names.txt` is a 300GB sized file? Then
 your program will not continue past `read_file` until that function
 `returns`, that is until it finishes. This is called a 
-blocking I/O function call. 
+blocking I/O function call. Everything network related can be
+a blocking I/O function call, like reading from a socket.
 
 	  </script>
 	</section>
@@ -131,9 +133,66 @@ blocking I/O function call.
 	  <script type="text/template">
 ## _node fundamentals cont..._
 ------------------------------
+Modern networked applications are web apps, mobile apps and 
+they want a lot of resources. To do this traditionally we'd 
+need to use multiple processes or threads. Both aren't the 
+easiest options to use. The genius of `node` is that it is 
+build from the beginning for networked applications, it scales
+very very well.
+
+`node` is able to do this by doing `async` coding by default.
+async coding means that the code runs in an unknown order if you
+were only looking at the source code, it means that something 
+on line 5 can happen after something on line 10.
 	  </script>
 	</section>
 
+
+	<section data-markdown>
+	  <script type="text/template">
+## _node fundamentals cont..._
+------------------------------
+So our previous example would be written in async style as: 
+
+```
+read_file('./names.txt', 'r', file_contents => {
+  const lines = file_content.split('\n');
+  for (let line of lines) {
+    console.log(`Length: of line:${line} is: ${line.length}`);
+  }
+});
+```
+Since reading a file is an I/O (Input/Output) operation, it could potentially
+block the program. Because of that a function like `read_file` will 
+try reading the file and instantly return, that is stop blocking the 
+main program. `read_file` also registers the callback that we gave as the
+3rd argument as the function to call *WHEN* the data does finally arrive.
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _node fundamentals cont..._
+------------------------------
+The callback is put onto the event loop. In node that is only one 
+`JavaScript` thread, which has to do all the JavaScript code and 
+also go through the event loop's various queues of things to do.
+Because of this, it is *EXTREMELY* important that you never block
+the thread, that means do something like `while(true) { }` or 
+a blocking system I/O call, like `sleep(10)`. Blocking the event 
+loop blocks all kinds of important system timers and library code.
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Networking_
+---------------
+
+
+	  </script>
+	</section>
 
       </div>
     </div>
