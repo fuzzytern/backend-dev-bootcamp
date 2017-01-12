@@ -302,7 +302,7 @@ on top of `UDP`.
 ## _ISTC-SPEAK Protocol_
 -------------------------------
 Let's invent a protocol called `ISTC-SPEAK`. Its a simple, 
-JSON based protocol on top of UDP.
+JSON based protocol on top of UDP. 
 
 Here's its description:
 
@@ -312,7 +312,7 @@ port := 6881
 msg ping := {identifier : String, uptime : Number }
 msg message := {identifier : Number, payload : String}
 ```
-
+<small>
 `ISTC-SPEAK` is made up of only two kinds of messages, `ping` 
 and `message`. Each needs to have an `identifier` field of type 
 `String`, `ping` has an extra field saying how long the sender 
@@ -320,6 +320,7 @@ has been running for and `message` has an extra field of the actual
 message that the sender wants to share with everyone on the multicast 
 network. Ping needs to be sent out every 25 seconds, so that clients
 can somewhat reliably know who is on the network.
+</small>
 	  </script>
 	</section>
 
