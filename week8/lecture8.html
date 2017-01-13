@@ -63,7 +63,7 @@
 
 ## Edgar Aroutiounian
 ---------------------
-#### ISTC backend development course, Week-7, Fall 2016
+#### ISTC backend development course, Week-8, Fall 2016
 #### Yerevan, Armenia
 	  </script>
 	</section>
@@ -91,11 +91,12 @@ functions other functions to complete computations (things to do).
 	  <script type="text/template">
 ## _CPS Style Cont..._
 ----------------------
-Sometimes though this can make code a bit hard to understand because
-you end up having to nest callbacks 
-(callbacks inside callbacks inside callbacks).
 
-Imagine something like this:
+<small>
+Sometimes though this can make code a bit hard to understand because
+you end up having to nest callbacks (callbacks inside 
+callbacks inside callbacks). Imagine something like this:
+</small>
 
 ```
 const fs = require('fs');
@@ -105,11 +106,48 @@ const server = require('./some-server');
 server.on('connection', (req, res) => {
   // Do not do this in read code, always clean up 
   // User input, never blindly give it to a SQL query.
-  db.query('select filename from
+  db
+   .query(`select filename from logs where id = ${req.id}`, 
+          (err, result) => {
+          if (result) {
+             fs.readFile(result.path, 'utf-8', d => res.end(d))
+          }
+  }
+
 })
 ```
+
+That's a lot of callback nesting!
+
 	  </script>
 	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+## _Promises_
+-------------
+The key idea with all the callbacks is that they are called when
+data finally become available in the future.
+
+`ES6` introduced a new value called `Promise` which capture this
+idea and makes it easier to write clearer code.
+
+A `Promise` is a JavaScript object which gets its value later
+and calls your functions when a value is ready or if an exception
+is thrown. We can mix and match callbacks with Promises and we can 
+change callback APIs into Promises based APIs.
+
+Look at this [blog post](http://hyegar.com/2016/12/23/async-promises-node/)
+for more explanations with code examples.
+	  </script>
+	</section>
+
+	<!-- <section data-markdown>
+	     <script type="text/template">
+
+
+	     </script>
+	     </section> -->
 
 
       </div>
