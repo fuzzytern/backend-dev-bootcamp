@@ -136,27 +136,35 @@ We are learning Linux because
 
 	<section data-markdown>
 	  <script type="text/template">
-### _Linux terminology_
-Operating systems are divided into `kernelspace` and `userspace`.
-Kernelspace is what the kernel controls, that basically hardware, the CPU,
-anything physical, your programs run in userspace and must ask the kernel
-with `system` calls for anything physical. Programs are also sometimes called
-binaries, processes or exectuables.
+	   ### _Linux terminology_
+	   -----------------------
+	   Operating systems are divided into `kernelspace` and `userspace`.
+	   Kernelspace is what the kernel controls, that basically hardware, the CPU,
+	   anything physical, your programs run in userspace and must ask the kernel
+	   with `system` calls for anything physical. Programs are also sometimes called
+	   binaries, processes or executables.
+	  </script>
+	</section>
 
-You can imagine it:
-```
----------------------------------------------
-|                                           |
-|  `userspace`, like `git`, `nano`, `node`. |
-|                                           |
-|           ------------------              |
-|          |                  |             |
-|          |   kernelspace    |             |
-|          |                  |             | 
-|          |                  |             |
-|           ------------------              |
----------------------------------------------
-```
+	<section data-markdown>
+	  <script type="text/template">
+	   ### _Linux terminology_
+
+	   You can imagine it like this:
+	   ```
+	   ---------------------------------------------
+	   |                                           |
+	   |  `userspace`, like `git`, `nano`, `node`. |
+	   |                                           |
+	   |           ------------------              |
+	   |          |                  |             |
+	   |          |   kernelspace    |             |
+	   |          |                  |             | 
+	   |          |                  |             |
+	   |           ------------------              |
+	   ---------------------------------------------
+	   ```
+	   In reality is more about a separation of memory/RAM.
 	  </script>
 	</section>
 
@@ -293,67 +301,81 @@ $ ls
 
 	<section data-markdown>
 	  <script type="text/template">
-### _file system + bash cont..._
---------------------------------
-**You can also give ls a path, can be absolute or relative**
-```
-$ ls /usr/include
-```
-** Find the directory of a file **
-```
-$ dirname <some_file>
-```
-** The shell also can do commands out of turn, 
-   aka not left to right. This says to do `dirname` first, 
-   then give the result to ls
-**
-```
-$ ls $(dirname <some_file>)
-```
+	   ### _file system + bash cont..._
+	   --------------------------------
+	   **You can also give ls a path, can be absolute or relative**
+	   ```
+	   $ ls /usr/include
+	   ```
+	   ** Find the directory of a file **
+	   ```
+	   $ dirname /usr/include/stdlib.h
+	   ```
+	   ** The shell also can do commands out of turn, 
+	   aka not left to right. This says to do `dirname` first, 
+	   then give the result to ls
+	   **
+	   ```
+	   $ ls $(dirname /usr/include)
+	   ```
 	  </script>
 	</section>
 
 	<section data-markdown>
 	  <script type="text/template">
-### _making shell scripts_
---------------------------
-We can also automate some of this shell coding.
-The shell also has a concept of `for loops`, `while loops`
-For example, imagine this file is called `printout.sh`
+	   ### _making shell scripts_
+	   --------------------------
+	   We can also automate some of this shell coding.
+	   The shell also has a concept of `for loops`, `while loops`
+	   For example, imagine this file is called `printout.sh`
 
-```
-#!/bin/bash
-for i in $(seq 8); do 
-    mkdir week-${i}
-done
-```
+	   ```
+	   #!/bin/bash
+	   for i in $(seq 8); do 
+	       mkdir week-${i}
+	   done
+	   ```
 
-This script can be run like: `bash printout.sh` and it
-will make 8 directories.
-
-if you do:
-```
-$ chmod +x printout.sh
-```
-Then it will say that this 
+	   This script can be run like: 
+	   ```
+	   $ bash printout.sh
+	   ``` 
+	   and it will make 8 directories.
 	  </script>
 	</section>
 
 	<section data-markdown>
 	  <script type="text/template">
-### _git_
+	   ### _making shell scripts_
+	   --------------------------
+	   
+	   We can also make the shell script file called `printout.sh` behave 
+	   as if was a separate program by using `chmod`.
+
+	   ````
+	   $ chmod +x printout.sh
+	   ```
+
+	   Then we can use it like any other program
+	   
+	   ```
+	   $ ./printout.sh
+	   ```
+
+	  </script>
+	</section>
+
+	<section data-markdown>
+	  <script type="text/template">
+### _git (Version Control)_
 ---------
 When we work on software we need a way to track the code, 
 a way to change it carefully and be able to work on a team, aka 
 other programmers. This kind of tool is called version control.
 
-There a few well known version control tools, some famous ones:
+There are a few well known version control tools, some famous ones:
 
-1. `git`
-2. `hg`
-3. `darcs`
-4. `cvs`
-5. `svn`
+1. `git` 2. `hg` 3. `darcs` 4. `cvs` 5. `svn`
 
 We will use (1), `git`.
 
@@ -362,37 +384,16 @@ We will use (1), `git`.
 
 	<section data-markdown>
 	  <script type="text/template">
-### _git_
----------
-We will do our work on [github](http://github.com)
-Github is a business built on top of github, it is free to 
-have an account there. Everyone must have an account on `github`.
+	   ### _git (Version Control)_
+	   ---------
+	   We will do our work on [github](http://github.com)
+	   Github is a business built on top of github, it is free to 
+	   have an account there. Everyone must have an account on `github`.
 
-We use git to make `commits`, a good commit should be self contained
-and have a good commit message. A good commit message is in the present 
-tense and describes what work is in the commit.
+	   We use git to make `commits`, a good commit should be self contained
+	   and have a good commit message. A good commit message is in the present 
+	   tense and describes what work is in the commit.
 
-
-	  </script>
-	</section>
-
-	<section data-markdown>
-	  <script type="text/template">
- ### _slide_
-	  </script>
-	</section>
-
-	<section data-markdown>
-	  <!-- Example, show Turkish bank cert -->
-	  <script type="text/template">
-### __
-----------------------------------------------------
-
-	  </script>
-	</section>
-
-	<section data-markdown>
-	  <script type="text/template">
 
 	  </script>
 	</section>
